@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+/* Zadane postavke */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Stilovi tijela stranice */
+body {
+    min-height: 100vh;
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: url('https://pixelz.cc/wp-content/uploads/2019/02/ford-mustang-shelby-gt500-uhd-4k-wallpaper.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+
+
+/* Stilovi spremnika flip kartice */
+.flip-card-container {
+  --hue: 0;
+  --primary: hsl(var(--hue), 0%, 0%); /* Crna boja */
+  --white-1: hsl(0, 0%, 90%); /* Bijela boja 1 */
+  --white-2: hsl(0, 0%, 80%); /* Bijela boja 2 */
+  --dark: hsl(var(--hue), 0%, 10%); /* Tamna boja */
+  --grey: hsl(0, 0%, 30%); /* Tamnija siva boja */
+  --orange: hsl(0, 0%, 100%); /* Narančasta boja */
+
+  width: 310px;
+  height: 500px;
+  margin: 40px;
+  perspective: 1000px;
+}
+
+/* Stilovi flip kartice */
+.flip-card {
+  width: inherit;
+  height: inherit;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: .6s .1s;
+}
+
+/* Stanja pri hoveru i fokusu */
+.flip-card-container:hover .flip-card,
+.flip-card-container:focus-within .flip-card {
+  transform: rotateY(180deg);
+}
+
+/* Stilovi prednje i stražnje strane kartice */
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card-front {
+  background: var(--primary); /* Boja pozadine prednje strane */
+  color: var(--orange); /* Boja teksta prednje strane */
+  transform: rotateY(0deg);
+}
+
+.card-back {
+  background: var(--white-1); /* Boja pozadine stražnje strane */
+  color: var(--dark); /* Boja teksta stražnje strane */
+  transform: rotateY(180deg);
+}
+
+/* Stilovi figure na kartici */
+.card-front figure,
+.card-back figure {
+  width: 260px;
+  height: 230px;
+  margin: 0 auto 20px auto;
+  border-radius: 6px;
+  background: var(--grey); /* Tamnija siva boja pozadine figure */
+  box-shadow: 0 3px 5px hsla(0, 0%, 0%, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-front figure::before,
+.card-back figure::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.card-front figure::before {
+  background: linear-gradient(to bottom, hsla(0, 0%, 0%, 0.25), hsla(0, 0%, 0%, 0.25)); /* Gradijent na prednjoj figuri */
+}
+
+.card-back figure::before {
+  background: linear-gradient(to bottom, hsla(220, 10%, 10%, 0.8), hsla(220, 10%, 10%, 0.8)); /* Gradijent na stražnjoj figuri */
+}
+
+/* Stilovi slika na kartici */
+.card-front img,
+.card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Stilovi natpisa na figuri */
+.card-front figcaption {
+  width: 100%;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: hsla(0, 0%, 100%, 0.1); /* Boja pozadine natpisa */
+  color: var(--orange); /* Boja teksta natpisa */
+  font-weight: 500;
+  font-size: 1.3rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+}
+
+/* Stilovi liste */
+ul {
+  list-style: none;
+  width: 100%;
+}
+
+ul li + li {
+  margin-top: 10px;
+}
+
+/* Stilovi gumba */
+button {
+  padding: 12px 24px;
+  border-radius: 100px;
+  background: var(--primary); /* Boja pozadine gumba */
+  color: var(--orange); /* Boja teksta gumba */
+  font: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 60px;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: var(--dark); /* Boja pozadine gumba pri hoveru */
+}
+
+button:focus {
+  transform: scale(1.1) translateY(4px);
+  background: var(--dark); /* Boja pozadine gumba pri fokusu */
+}
+
+/* Stilovi spremnika za dizajn */
+.design-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.design {
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  background: hsla(var(--hue), 0%, 0%, 0.15); /* Crna boja */
+  transition: 0.2s;
+}
+
+/* Pojedinačni elementi dizajna */
+.design--1 {
+  width: 110px;
+  height: 110px;
+  bottom: -60px;
+  left: -10px;
+}
+
+.design--2 {
+  width: 150px;
+  height: 150px;
+  bottom: -50px;
+  right: -60px;
+}
+
+.design--3 {
+  width: 85px;
+  height: 85px;
+  top: -20px;
+  right: -40px;
+}
+
+.design--4 {
+  width: 95px;
+  height: 95px;
+  bottom: 90px;
+  left: -40px;
+}
+
+.design--5 {
+  width: 80px;
+  height: 80px;
+  bottom: 40px;
+  left: 70px;
+}
+
+.design--6 {
+  width: 100px;
+  height: 100px;
+  bottom: -10px;
+  left: 140px;
+}
+
+.design--7 {
+  width: 150px;
+  height: 150px;
+  top: 80px;
+  right: -75px;
+}
+
+.design--8 {
+  width: 60px;
+  height: 60px;
+  top: 10px;
+  left: 90px;
+}
+
+/* Stanja pri hoveru i fokusu za elemente dizajna */
+.flip-card-container:hover .design--1,
+.flip-card-container:focus-within .design--1 {
+  transform: translate3d(20px, -20px, 0);
+}
+
+.flip-card-container:hover .design--2,
+.flip-card-container:focus-within .design--2 {
+  transform: translate3d(-40px, -20px, 0);
+}
+
+.flip-card-container:hover .design--3,
+.flip-card-container:focus-within .design--3 {
+  transform: translate3d(0, 60px, 0);
+}
+
+.flip-card-container:hover .design--4,
+.flip-card-container:focus-within .design--4 {
+  transform: translate3d(20px, 20px, 0);
+}
+
+.flip-card-container:hover .design--5,
+.flip-card-container:focus-within .design--5 {
+  transform: translate3d(-60px, 0, 0);
+}
+
+.flip-card-container:hover .design--6,
+.flip-card-container:focus-within .design--6 {
+  transform: translate3d(30px, 30px, 0);
+}
+
+.flip-card-container:hover .design--7,
+.flip-card-container:focus-within .design--7 {
+  transform: translate3d(-20px, 0, 0);
+}
+
+.flip-card-container:hover .design--8,
+.flip-card-container:focus-within .design--8 {
+  transform: translate3d(10px, 30px, 0);
+}
